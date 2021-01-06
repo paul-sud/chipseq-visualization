@@ -7,9 +7,9 @@
 # Too big for git, ~100 MB
 /bigbed-jaccard/data/jaccard.tsv
 
-/front-end/node_modules/
+/frontend/node_modules/
 
-/back-end/corr_end/.env
+/backend/corr_end/.env
 .idea/workspace.xml
 *.pyc
 *~
@@ -19,9 +19,9 @@ myvenv
 db.sqlite3
 /static
 .DS_Store
-/back-end/bedAuto/*
-/back-end/corr_end/bedAuto/*
-/back-end/corr_end/send_values/api/bedAuto/*
+/backend/bedAuto/*
+/backend/corr_end/bedAuto/*
+/backend/corr_end/send_values/api/bedAuto/*
 /.idea/*
 
 # Created by https://www.gitignore.io/api/pycharm
@@ -32,58 +32,58 @@ db.sqlite3
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-/back-end/.idea/**/workspace.xml
-/back-end/.idea/**/tasks.xml
-/back-end/.idea/**/usage.statistics.xml
-/back-end/.idea/**/dictionaries
-/back-end/.idea/**/shelf
+/backend/.idea/**/workspace.xml
+/backend/.idea/**/tasks.xml
+/backend/.idea/**/usage.statistics.xml
+/backend/.idea/**/dictionaries
+/backend/.idea/**/shelf
 
 # Generated files
-/back-end/.idea/**/contentModel.xml
+/backend/.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
-/back-end/.idea/**/dataSources/
-/back-end/.idea/**/dataSources.ids
-/back-end/.idea/**/dataSources.local.xml
-/back-end/.idea/**/sqlDataSources.xml
-/back-end/.idea/**/dynamic.xml
-/back-end/.idea/**/uiDesigner.xml
-/back-end/.idea/**/dbnavigator.xml
+/backend/.idea/**/dataSources/
+/backend/.idea/**/dataSources.ids
+/backend/.idea/**/dataSources.local.xml
+/backend/.idea/**/sqlDataSources.xml
+/backend/.idea/**/dynamic.xml
+/backend/.idea/**/uiDesigner.xml
+/backend/.idea/**/dbnavigator.xml
 
 # Gradle
-/back-end/.idea/**/gradle.xml
-/back-end/.idea/**/libraries
+/backend/.idea/**/gradle.xml
+/backend/.idea/**/libraries
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
-# /back-end/.idea/modules.xml
-# /back-end/.idea/*.iml
-# /back-end/.idea/modules
-# /back-end/*.iml
-# /back-end/*.ipr
+# /backend/.idea/modules.xml
+# /backend/.idea/*.iml
+# /backend/.idea/modules
+# /backend/*.iml
+# /backend/*.ipr
 
 # CMake
 cmake-build-*/
 
 # Mongo Explorer plugin
-/back-end/.idea/**/mongoSettings.xml
+/backend/.idea/**/mongoSettings.xml
 
 # File-based project format
-/back-end/*.iws
+/backend/*.iws
 
 # IntelliJ
 out/
 
 # mpeltonen/sbt-idea plugin
-/back-end/.idea_modules/
+/backend/.idea_modules/
 
 # JIRA plugin
 atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
-/back-end/.idea/replstate.xml
+/backend/.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
@@ -92,27 +92,28 @@ crashlytics-build.properties
 fabric.properties
 
 # Editor-based Rest Client
-/back-end/.idea/httpRequests
+/backend/.idea/httpRequests
 
 # Android studio 3.1+ serialized cache file
-/back-end/.idea/caches/build_file_checksums.ser
+/backend/.idea/caches/build_file_checksums.ser
 
 ### PyCharm Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-# /back-end/*.iml
+# /backend/*.iml
 # modules.xml
-# /back-end/.idea/misc.xml
+# /backend/.idea/misc.xml
 # *.ipr
 
 # Sonarlint plugin
-/back-end/.idea/**/sonarlint/
+/backend/.idea/**/sonarlint/
 
 # SonarQube Plugin
-/back-end/.idea/**/sonarIssues.xml
+/backend/.idea/**/sonarIssues.xml
 
 # Markdown Navigator plugin
-/back-end/.idea/**/markdown-navigator.xml
-/back-end/.idea/**/markdown-navigator/
+/backend/.idea/**/markdown-navigator.xml
+/backend/.idea/**/markdown-navigator/
 
 # End of https://www.gitignore.io/api/pycharm
+venv

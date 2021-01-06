@@ -2,7 +2,7 @@
 # Front End Setup
 // install JavaScript dependencies listed in package.json
 
-// navigate to front-end directory
+// navigate to frontend directory
 
 ```
 $ npm install
@@ -10,7 +10,7 @@ $ npm install
 
 # Back End Setup
 1. Make sure Postgres is installed.
-2. Properly configure .env file (see .env.example file in back-end directory as a template). Create a new database with an appropriate postgres user/password configuration with sufficient permissions to access and edit the newly created database. Then, ensure that the variables below in particular are properly configured.
+2. Properly configure .env file (see .env.example file in backend directory as a template). Create a new database with an appropriate postgres user/password configuration with sufficient permissions to access and edit the newly created database. Then, ensure that the variables below in particular are properly configured.
 
 SECRET_KEY=your-secret-key
 
@@ -46,7 +46,7 @@ role_arn = "{ADITYA-LAMBDA-CLI ROLE_ARN - AWS CHERRY LAB ACCESS REQUIRED HERE}"
 
 source_profile = default
 
-4. Create a conda environment and install all the python dependencies from requirements.txt in back-end directory into this conda environment.
+4. Create a conda environment and install all the python dependencies from requirements.txt in backend directory into this conda environment.
 
 # Running the application
 Termminal 1 (running React JS front end):
@@ -55,7 +55,7 @@ Termminal 1 (running React JS front end):
 $ open -a /Applications/Google\ Chrome.app --args --user-data-dir="/var/tmp/Chrome dev session" --disable-web-security
 ```
 
-// navigate to front-end directory
+// navigate to frontend directory
 
 ```
 $ nvm use v11.15.0
@@ -68,7 +68,7 @@ Terminal 2 (running Python Django server back end):
 $ conda activate {NAME OF CONDA ENVIRONMENT WITH PYTHON DEPENDENCIES INSTALLED}
 ```
 
-// navigate to the back-end/corr-end sub-directory
+// navigate to the backend/corr-end sub-directory
 
 ```
 $ python manage.py runserver
