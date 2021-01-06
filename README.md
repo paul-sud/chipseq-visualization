@@ -1,4 +1,9 @@
 # chipseq-visualization
+
+# Local installation
+
+1. Using Python 3.6 or higher, cre
+
 # Front End Setup
 // install JavaScript dependencies listed in package.json
 
