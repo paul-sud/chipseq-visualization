@@ -26,10 +26,12 @@ Run the following command. This may take a while on the first go since it will b
 docker-compose up
 ```
 
-Then run the following :
+Before hitting any endpoints run the following to create tables:
 ```bash
 docker-compose run backend python corr_end/manage.py migrate
 ```
+
+Frontend will be accessible on http://localhost:3000/ and backend on http://localhost:8000/
 
 # Troubleshooting (Cherry Lab Members With Access to Cherry Lab AWS only)
 

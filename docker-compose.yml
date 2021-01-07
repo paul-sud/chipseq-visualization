@@ -28,8 +28,8 @@ services:
     build: ./frontend
     command: yarn start
     volumes:
-      - ./frontend:/code
+      - ./frontend:/app
     ports:
-      - "8000:8000"
+      - "3000:3000"
     depends_on:
-      - db
+      - backend
