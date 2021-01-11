@@ -1,5 +1,6 @@
 boto3==1.10.39
 Django==3.0.3
+django-cors-headers==3.6.0
 django-filter==2.2.0
 djangorestframework==3.11.0
 pandas==1.0.3
