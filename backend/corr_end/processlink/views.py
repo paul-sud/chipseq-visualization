@@ -1,29 +1,12 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from send_values.api.send_to_db import insert_db
 
-import requests
-from urllib.parse import urlparse
-
-import sys
-import json
-
-import requests
-from rest_framework.views import APIView
-#from django.shortcuts import render
 
 # http://127.0.0.1:8000/processlink/pushlink
 @api_view(['POST'])
 def postLink(request):
-    '''
-    :param request:
-    :return:
-    '''
     print(request.method)
     print(request.data)
 
@@ -55,7 +38,6 @@ def postLink(request):
 # http://127.0.0.1:8000/processlink/sendlink
 @api_view(['GET'])
 def getLink(param):
-    #process_files()
     print("get link called")
     s = param.query_params.get('experimentName')
     print(s)

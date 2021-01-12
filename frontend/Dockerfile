@@ -4,6 +4,12 @@ COPY package.json /app/package.json
 COPY yarn.lock /app/yarn.lock
 ENV PATH /app/node_modules/.bin:$PATH
 RUN apk --no-cache add --virtual native-deps \
-  g++ gcc libgcc libstdc++ linux-headers make python2 && \
-  yarn && \
-  apk del native-deps
+  g++ \
+  gcc \
+  libgcc \
+  libstdc++ \
+  linux-headers \
+  make \
+  python2
+RUN yarn
+RUN apk del native-deps

@@ -4,11 +4,15 @@
 
 Install Docker and [`docker-compose`](https://docs.docker.com/compose/). On MacOS this can be accomplished by simply installing [Docker Desktop](https://docs.docker.com/docker-for-mac/install/).
 
-Create `.env` file in the repo root, see [this template](./backend/corr_end/.env.example)
+Create `.env` file in the repo root, see [this template](./backend/corr_end/.env.example). You can create a secret key using the following one-liner:
 
-## Backend Setup
+```bash
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+```
 
-1. Configure AWS CLI, assuming you already installed and set up default your credentials. Edit `.aws/credentials` in your home directory to add the following profile.
+## AWS Setup (local development only)
+
+Configure the AWS CLI, assuming you already [installed it](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and [set up your default credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config). Edit `.aws/credentials` in your home directory to add the following profile (you should have a `default` profile in there after initial configuration).
 
 ```
 [aditya-lambda-cli]
@@ -17,6 +21,8 @@ output = json
 role_arn = "{ADITYA-LAMBDA-CLI ROLE_ARN - AWS CHERRY LAB ACCESS REQUIRED HERE}"
 source_profile = default
 ```
+
+In production, you will rely IAM Roles, for example for [EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html). Containers inherit IAM Role from the host instance.
 
 # Running the application
 
