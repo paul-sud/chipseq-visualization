@@ -28,5 +28,7 @@ export default (state = initStore, action) => {
             return { ...state, loading: action.payload.loading }
         case "submissions_server_error":
             return {...state, loading: action.payload.loading, server_message: action.payload.server_message}
+        default:
+            return { ...state, loading: action.payload.loading }
     }
 }

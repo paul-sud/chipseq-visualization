@@ -1,5 +1,4 @@
 import React from 'react'
-import _ from 'lodash'
 import { } from 'highcharts/'
 import Highcharts from 'highcharts'
 import HeatMap from 'highcharts/modules/heatmap'
@@ -21,7 +20,7 @@ export default class MyHeatMap extends React.Component {
     [2, 0, 0.5], [2, 1, 0.5], [2, 2, 1]];
 
     displayHeatMapLocal = () => {
-        var showHeatMap = Highcharts.chart("januheatmap", {
+        Highcharts.chart("januheatmap", {
             chart: {
                 type: 'heatmap',
                 marginTop: 40,
@@ -65,7 +64,7 @@ export default class MyHeatMap extends React.Component {
     }
 
     displayHeatMapChild = () => {
-        var showHeatMap = Highcharts.chart("childmap", {
+        Highcharts.chart("childmap", {
             chart: {
                 type: 'heatmap',
                 marginTop: 40,
@@ -107,7 +106,7 @@ export default class MyHeatMap extends React.Component {
     }
 
     displayHeatMapParent = () => {
-        var showHeatMap = Highcharts.chart("parentmap", {
+        Highcharts.chart("parentmap", {
             chart: {
                 type: 'heatmap',
                 marginTop: 40,

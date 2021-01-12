@@ -19,7 +19,7 @@ const toggleSelector = (ref) => {
 const NavSwitchButton = React.forwardRef((props, ref) => {
     console.log(props);
     console.log("side nav expanded - navswitch.js%%%%%%%%%%%%%%%%%%")
-    console.log(props. shutterflyOpen);
+    console.log(props.shutterflyOpen);
     return (
         <div ref={ref} className="hamburger hamburger--collapse hamburger--arrow is-active"
             onClick={() => { toggleSelector(ref); props.gotClick() }}>

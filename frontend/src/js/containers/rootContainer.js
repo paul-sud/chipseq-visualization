@@ -3,7 +3,6 @@ import Navigation from '../components/shutter/shuttergate';
 import { SIDE_MENU_OBJECT } from '../definitions/sideMenuObject';
 import { showPageAction, showToggleDoorAction } from '../actions/navAction';
 import { Store } from '../store/Store';
-import { usePrevious } from '../utils/usePrevious';
 import { Layout } from 'antd';
 import './rootContainer.css';
 
@@ -22,16 +21,14 @@ const RootContainer = (props) => {
 
     const {
         state: {
-            navigation: { shutterflyOpen, page, env, schema }
+            navigation: { shutterflyOpen, page }
         },
         dispatch
     } = useContext(Store);
 
-    const prev = usePrevious({  env });
-
     const updatefilteredDepartments = useCallback(() => {
         console.log('updatefilters called')
-    }, [prev,  env, dispatch]);
+    }, []);
 
 
     useEffect(() => {

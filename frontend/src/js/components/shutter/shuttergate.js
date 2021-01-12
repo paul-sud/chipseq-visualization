@@ -3,13 +3,9 @@ import NavSwitch from './navswitch';
 import './sfly.scss';
 
 export default class Navigation extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     getNavItems = () => {
         return this.props.menuItems.map((o, idx) => {
-            if (o.navKey == this.props.currentPage) {
+            if (o.navKey === this.props.currentPage) {
                 return (<div onClick={() => {this.props.showPage(o.path, o.navKey)}} className="farm-bar-item is-slctd">
                     <div className="side-nav-slctn "></div>
                     

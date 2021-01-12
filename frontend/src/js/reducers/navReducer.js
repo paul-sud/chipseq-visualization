@@ -20,7 +20,7 @@ export const NavReducer = (state, action) => {
                 ...state,
                 navigation: {
                     ...state.navigation,
-                     shutterflyOpen: !state.navigation. shutterflyOpen
+                    shutterflyOpen: !state.navigation.shutterflyOpen
                 }
             };
             console.log("after state change - EVENT_SHUTTER_FLY_OPEN");

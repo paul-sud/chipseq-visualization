@@ -26,7 +26,7 @@ export const VisualizeContainer = () => {
     console.log("rand exp name")
     console.log(randExpName);
 
-    const [experimentName, setExperimentName] = useState(randExpName);
+    const [experimentName] = useState(randExpName);
 
     const [assemblyName, setAssemblyName] = useState("GRCh38");
 
@@ -36,18 +36,12 @@ export const VisualizeContainer = () => {
 
     console.log(encodeLink);
 
-    const [{ loading, error, submission_data }, dispatch] = useReducer(visualizeReducer, initialState);
+    const [{ loading }, dispatch] = useReducer(visualizeReducer, initialState);
 
     const handleChangeLink = (event) => {
         console.log("handle change link");
         console.log(event.currentTarget.value);
         setEncodeLink(event.currentTarget.value);
-    }
-
-    const handleChangeExp = (event) => {
-        console.log("handle change experiment");
-        console.log(event.currentTarget.value);
-        setExperimentName(event.currentTarget.value);
     }
 
     const handleChangeAssembly = (event) => {
@@ -72,7 +66,7 @@ export const VisualizeContainer = () => {
         console.log("start submission");
         const submittedLink = encodeLink;
         const submittedExp = experimentName;
-        const subbmittedAssembly = assemblyName;
+        const submittedAssembly = assemblyName;
         const submittedFile = fileInputName;
         const submittedOutputType = outputType;
         console.log(submittedLink);
@@ -82,16 +76,14 @@ export const VisualizeContainer = () => {
         console.log("end")
         console.log(dispatch);
         startSpinner(dispatch);
-        visualizeAction(dispatch, submittedLink, submittedExp, subbmittedAssembly, submittedOutputType, submittedFile);
+        visualizeAction(dispatch, submittedLink, submittedExp, submittedAssembly, submittedOutputType, submittedFile);
     }
-
-    let testLoading = true;
 
     let disableStatus = false;
 
     let dynamicClass = "v-hide";
 
-    if (loading == true) {
+    if (loading === true) {
         dynamicClass = "v-hide";
         disableStatus = true;
     } else {

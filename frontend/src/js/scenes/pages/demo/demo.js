@@ -1,10 +1,10 @@
-import React, { useReducer, useState } from 'react';
+import React, { useState } from 'react';
 import { HeatMapContainer } from '../../../containers/heatmapContainer';
 import { Col, Form, Input, Button, Checkbox } from 'antd';
 import './demo.scss';
 
 const Demo = (props) => {
-    const [encodeLink, setEncodeLink] = useState("https://www.encodeproject.org/search/?searchTerm=H3K4ME3&type=Experiment&replication_type=isogenic&assembly=GRCh38&award.rfa=ENCODE4&format=json");
+    const [encodeLink] = useState("https://www.encodeproject.org/search/?searchTerm=H3K4ME3&type=Experiment&replication_type=isogenic&assembly=GRCh38&award.rfa=ENCODE4&format=json");
 
     return (
         <div>

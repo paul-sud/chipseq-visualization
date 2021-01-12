@@ -2,9 +2,7 @@ import React, {useContext, useEffect, useCallback, lazy, Suspense} from 'react';
 import {Layout} from 'antd';
 import Header from './scenes/header/header';
 import RootContainer from './containers/rootContainer';
-import {usePrevious} from './utils/usePrevious';
 import {Store} from './store/Store';
-import DefaultBack from './components/defaultBack/defaultBack';
 import LoadingPage from './scenes/loadingPage/loadingPage';
 
 const LazyOverviewPage = lazy(() => import('./scenes/pages/overview/overview'));
@@ -17,16 +15,15 @@ const RootManager = () => {
            
             cherryUser,
             departments,
-            navigation: {  page, env }
+            navigation: { page }
         },
         dispatch
     } = useContext(Store);
 
-    const prev = usePrevious({ env});
 
     const updatefilteredDepartments = useCallback(() => {
         console.log('updatefilters called ');
-    }, [prev,  env, dispatch]);
+    }, []);
 
     const januCB = useCallback(() => {
         console.log("call back");
@@ -35,7 +32,7 @@ const RootManager = () => {
         console.log(dispatch);
 
 
-    }, [cherryUser,  dispatch, departments, env]);
+    }, [cherryUser,  dispatch, departments]);
 
     useEffect(() => {
         console.log("step 1");

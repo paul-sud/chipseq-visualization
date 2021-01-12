@@ -37,5 +37,7 @@ export default (state = initStore, action) => {
             return {...state, loading: true}
         case "correlations_error":
             return {...state, error: true}
+        default:
+            return {...state, loading: true}
     }
 }

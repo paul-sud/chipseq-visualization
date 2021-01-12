@@ -36,7 +36,7 @@ export const HeatMapContainer = (props) => {
             }]
     }
 
-    const [{ loading, error, correlations_data }, dispatch] = useReducer(heatmapReducer, initialState);
+    const [{ correlations_data }, dispatch] = useReducer(heatmapReducer, initialState);
 
     const mapCB = useCallback(() => {
         console.log('Step 2 - react call back fired');

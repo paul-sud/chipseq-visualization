@@ -21,7 +21,7 @@ const Overview = () => {
                     The Python library Django handles REST APIs for the back end and gets the link.
                     After parsing through the JSON file containing ChiP-Seq metadata from the ENCODE portal, ENCSRs and ENCFFs json metadata files are obtained and further parsed.
                     <b> Bed files meeting these three criteria GRCh38 (assembly type), bed narrowPeak (file format), and replicated peaks (output type) are downloaded from the ENCODE AWS S3 buckets.
-                    Using the Python library <a href="https://pyranges.readthedocs.io/en/latest/autoapi/pyranges/statistics/index.html?highlight=jaccard#pyranges.statistics.StatisticsMethods.jaccard" target="_blank">Pyranges</a>, the <a href="https://www.statisticshowto.com/jaccard-index/" target="_blank">jaccard correlation statistic</a> is calculated among all the unique pairs of all the bed files. </b>
+                    Using the Python library <a href="https://pyranges.readthedocs.io/en/latest/autoapi/pyranges/statistics/index.html?highlight=jaccard#pyranges.statistics.StatisticsMethods.jaccard" target="_blank" rel="noopener noreferrer">Pyranges</a>, the <a href="https://www.statisticshowto.com/jaccard-index/" target="_blank" rel="noopener noreferrer">jaccard correlation statistic</a> is calculated among all the unique pairs of all the bed files. </b>
                     AWS Lambda asynchronous invocations (one per unique pair of bed files) are used to decrease the calculation time and return the correlation value of the paired bed files.
                     The correlation values are stored in the postgres database.
                     Django posts the correlation values to the front end.
