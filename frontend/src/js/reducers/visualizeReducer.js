@@ -5,7 +5,7 @@ let initStore = {
     submission_data: {
         "name": "ASP",
         "type": "sv",
-        "experimentName": "test9",
+        "experiment_name": "test9",
         "x": "https://www.encodeproject.org/search/?searchTerm=H3K4ME3&type=Experiment&replication_type=isogenic&assembly=GRCh38&award.rfa=ENCODE4&format=json"
     }
 }

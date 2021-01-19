@@ -75,22 +75,22 @@ class CorrelationsSerializer(ModelSerializer):
     class Meta:
         model = Correlations
         fields = [
-            "experimentName",
-            "rowNum",
-            "colNum",
-            "rowLabel",
-            "colLabel",
-            "corrValue",
+            "experiment_name",
+            "row_num",
+            "col_num",
+            "row_label",
+            "col_label",
+            "corr_value",
         ]
 
     def validate(self, user_data):
         if not (
-            user_data["experimentName"]
-            or user_data["rowNum"]
-            or user_data["colNum"]
-            or user_data["rowLabel"]
-            or user_data["colLabel"]
-            or user_data["corrValue"]
+            user_data["experiment_name"]
+            or user_data["row_num"]
+            or user_data["col_num"]
+            or user_data["row_label"]
+            or user_data["col_label"]
+            or user_data["corr_value"]
         ):
             print("One or more of the fields is missing.")
             return ValidationError
@@ -103,12 +103,12 @@ class CorrelationsSerializer(ModelSerializer):
 
     def update(self, existing_correlation, user_data):
         fields = [
-            "experimentName",
-            "rowNum",
-            "colNum",
-            "rowLabel",
-            "colLabel",
-            "corrValue",
+            "experiment_name",
+            "row_num",
+            "col_num",
+            "row_label",
+            "col_label",
+            "corr_value",
         ]
         for i in fields:
             field_value = user_data.get(i, getattr(existing_correlation, i))
@@ -179,8 +179,8 @@ class CorrelationsViewSet(ModelViewSet):
     http_method_names = ["get", "post", "put", "delete", "options"]
     queryset = Correlations.objects.all()
     filter_backends = (DjangoFilterBackend,)
-    # filterset_fields = ('experimentName', 'rowNum', 'colNum', 'rowLabel', 'colLabel', 'corrValue')
-    filterset_fields = ("experimentName", "rowLabel", "colLabel", "corrValue")
+    # filterset_fields = ('experiment_name', 'row_num', 'col_num', 'row_label', 'col_label', 'corr_value')
+    filterset_fields = ("experiment_name", "row_label", "col_label", "corr_value")
 
 
 class DinoSerializer(ModelSerializer):

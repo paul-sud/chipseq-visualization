@@ -4,12 +4,12 @@ from django.db import models
 """
 # Sample post below
 {
-"experimentName": "replicateSV21",
-"rowNum": "1",
-"colNum": "1",
-"rowLabel": "ENCFF415GFH",
-"colLabel": "ENCFF415GFH",
-"corrValue": "1.0"
+"experiment_name": "replicateSV21",
+"row_num": "1",
+"col_num": "1",
+"row_label": "ENCFF415GFH",
+"col_label": "ENCFF415GFH",
+"corr_value": "1.0"
 }
 """
 
@@ -52,36 +52,36 @@ class Researcher(models.Model):
 
 
 class Correlations(models.Model):
-    experimentName = models.CharField(max_length=100)
-    rowNum = models.PositiveIntegerField()
-    colNum = models.PositiveIntegerField()
-    rowLabel = models.CharField(max_length=100)
-    colLabel = models.CharField(max_length=100)
-    corrValue = models.FloatField()
+    experiment_name = models.CharField(max_length=100)
+    row_num = models.PositiveIntegerField()
+    col_num = models.PositiveIntegerField()
+    row_label = models.CharField(max_length=100)
+    col_label = models.CharField(max_length=100)
+    corr_value = models.FloatField()
 
     class Meta:
-        ordering = ("experimentName",)
+        ordering = ("experiment_name",)
 
     def __unicode__(self):
         if not (
-            self.experimentName
-            or self.rowNum
-            or self.colNum
-            or self.rowLabel
-            or self.colLabel
-            or self.corrValue
+            self.experiment_name
+            or self.row_num
+            or self.col_num
+            or self.row_label
+            or self.col_label
+            or self.corr_value
         ):
             return u"One or more of the fields is missing"
         else:
             return (
                 u"Experiment Name: %s, Row Num: %d, Col Num: %d, Row Label: %s, Col Label: %s, Corr Value: %f"
                 % (
-                    self.experimentName,
-                    self.rowNum,
-                    self.colNum,
-                    self.rowLabel,
-                    self.colLabel,
-                    self.corrValue,
+                    self.experiment_name,
+                    self.row_num,
+                    self.col_num,
+                    self.row_label,
+                    self.col_label,
+                    self.corr_value,
                 )
             )
 

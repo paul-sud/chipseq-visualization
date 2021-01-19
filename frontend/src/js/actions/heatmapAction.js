@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const getCorrelationRecords = (submittedExp) => {
-    let url = "http://localhost:8000/values/correlations/?experimentName=samplerun";
+    let url = "http://localhost:8000/values/correlations/?experiment_name=samplerun";
     let ob = {"content-type": "application/json"};
     if (submittedExp && submittedExp.length > 0) {
-        url = "http://localhost:8000/values/correlations/?experimentName=" + submittedExp;
+        url = "http://localhost:8000/values/correlations/?experiment_name=" + submittedExp;
         console.log(url);
     }
     return axios.get(url, {headers: ob});

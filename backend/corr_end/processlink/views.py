@@ -13,7 +13,7 @@ def postLink(request):
     requestDict = request.data
 
     link = requestDict["encodeLink"]
-    exp_name = requestDict["experimentName"]
+    exp_name = requestDict["experiment_name"]
     assembly = requestDict["assembly"]
     outputType = requestDict["outputType"]
     fileInput = requestDict["fileInput"]
@@ -37,11 +37,11 @@ def postLink(request):
 @api_view(["GET"])
 def getLink(param):
     print("get link called")
-    s = param.query_params.get("experimentName")
+    s = param.query_params.get("experiment_name")
     print(s)
 
     mydata = {"name": "ASP", "type": "sv", "content": [[1.0, 2.0, 3], [2, 3, 4]]}
-    mydata["experimentName"] = s
+    mydata["experiment_name"] = s
 
     x = "https://www.encodeproject.org/search/?searchTerm=H3K4ME3&type=Experiment&replication_type=isogenic&assembly=GRCh38&award.rfa=ENCODE4&format=json"
     args = [x]

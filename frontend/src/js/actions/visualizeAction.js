@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const postSubmission = (encodeLink, experimentName, assembly, outputType, fileInput) => {
+const postSubmission = (encodeLink, experiment_name, assembly, outputType, fileInput) => {
     let linkValue = "https://www.encodeproject.org/search/?searchTerm=H3K4ME3&type=Experiment&replication_type=isogenic&assembly=GRCh38&award.rfa=ENCODE4&format=json";
     let expValue = "test9";
     if (encodeLink && encodeLink.length > 4) {
         linkValue = encodeLink;
     }
-    if (experimentName) {
-        expValue = experimentName;
+    if (experiment_name) {
+        expValue = experiment_name;
     }
     console.log("assembly");
     console.log(assembly);
@@ -17,7 +17,7 @@ const postSubmission = (encodeLink, experimentName, assembly, outputType, fileIn
     let ob = { "content-type": "application/json" };
     let data = {
         "encodeLink": linkValue,
-        "experimentName": expValue,
+        "experiment_name": expValue,
         "assembly": assembly,
         "outputType": outputType,
         "fileInput": fileInput
@@ -45,12 +45,12 @@ export const startSpinner = (dispatch) => {
     })
 }
 
-export const visualizeAction = async (dispatch, encodeLink, experimentName, assembly, outputType, fileInput) => {
+export const visualizeAction = async (dispatch, encodeLink, experiment_name, assembly, outputType, fileInput) => {
     console.log(encodeLink);
-    console.log(experimentName);
+    console.log(experiment_name);
     console.log(assembly);
     console.log(outputType);
-    const response = await postSubmission(encodeLink, experimentName, assembly, outputType, fileInput);
+    const response = await postSubmission(encodeLink, experiment_name, assembly, outputType, fileInput);
     if (response) {
         let payload = {
             submission_data: response.data,

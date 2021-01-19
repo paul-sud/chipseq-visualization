@@ -11,7 +11,7 @@ export default class MyHeatMap extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            experimentName: "test9"
+            experiment_name: "test9"
         }
     }
 
@@ -161,7 +161,7 @@ export default class MyHeatMap extends React.Component {
         console.log(event.currentTarget.value);
         const newValue = event.currentTarget.value;
         this.setState({
-            experimentName: newValue
+            experiment_name: newValue
         });
     }
 

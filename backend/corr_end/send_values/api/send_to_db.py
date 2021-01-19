@@ -10,19 +10,19 @@ from .lambda_async_s3_uri import filter_complete
 
 def insert_db(args):
     if path.exists("input.txt"):
-        bashCommand = "rm input.txt"
-        process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+        bash_command = "rm input.txt"
+        process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
         process.communicate()
 
     if path.exists("output.csv"):
-        bashCommand = "rm output.csv"
-        process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+        bash_command = "rm output.csv"
+        process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
         process.communicate()
 
     table_values = filter_complete(args)
 
     ordered_table_values = sorted(
-        table_values, key=lambda i: (i["rowNum"], i["colNum"])
+        table_values, key=lambda i: (i["row_num"], i["col_num"])
     )
 
     for value_set in ordered_table_values:

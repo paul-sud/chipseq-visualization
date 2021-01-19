@@ -3,28 +3,28 @@ let initStore = {
     error: false,
     correlations_data: [
         {
-            "experimentName": "test9",
-            "rowNum": 0,
-            "colNum": 0,
-            "rowLabel": "ENCFF017NXL.bed.gz",
-            "colLabel": "ENCFF017NXL.bed.gz",
-            "corrValue": 1
+            "experiment_name": "test9",
+            "row_num": 0,
+            "col_num": 0,
+            "row_label": "ENCFF017NXL.bed.gz",
+            "col_label": "ENCFF017NXL.bed.gz",
+            "corr_value": 1
         },
         {
-            "experimentName": "test9",
-            "rowNum": 0,
-            "colNum": 1,
-            "rowLabel": "ENCFF017NXL.bed.gz",
-            "colLabel": "ENCFF071XMA.bed.gz",
-            "corrValue": 0.401480573670878
+            "experiment_name": "test9",
+            "row_num": 0,
+            "col_num": 1,
+            "row_label": "ENCFF017NXL.bed.gz",
+            "col_label": "ENCFF071XMA.bed.gz",
+            "corr_value": 0.401480573670878
         },
         {
-            "experimentName": "test9",
-            "rowNum": 0,
-            "colNum": 2,
-            "rowLabel": "ENCFF017NXL.bed.gz",
-            "colLabel": "ENCFF106NXV.bed.gz",
-            "corrValue": 0.653801541642514
+            "experiment_name": "test9",
+            "row_num": 0,
+            "col_num": 2,
+            "row_label": "ENCFF017NXL.bed.gz",
+            "col_label": "ENCFF106NXV.bed.gz",
+            "corr_value": 0.653801541642514
         }
     ]
 }

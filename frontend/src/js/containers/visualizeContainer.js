@@ -14,7 +14,7 @@ export const VisualizeContainer = () => {
         submission_data: {
             "name": "ASP",
             "type": "sv",
-            "experimentName": "test10",
+            "experiment_name": "test10",
             "x": "https://www.encodeproject.org/search/?searchTerm=H3K4ME3&type=Experiment&replication_type=isogenic&assembly=GRCh38&award.rfa=ENCODE4&format=json"
         }
     }
@@ -26,7 +26,7 @@ export const VisualizeContainer = () => {
     console.log("rand exp name")
     console.log(randExpName);
 
-    const [experimentName] = useState(randExpName);
+    const [experiment_name] = useState(randExpName);
 
     const [assemblyName, setAssemblyName] = useState("GRCh38");
 
@@ -65,7 +65,7 @@ export const VisualizeContainer = () => {
     const inputSave = () => {
         console.log("start submission");
         const submittedLink = encodeLink;
-        const submittedExp = experimentName;
+        const submittedExp = experiment_name;
         const submittedAssembly = assemblyName;
         const submittedFile = fileInputName;
         const submittedOutputType = outputType;
@@ -101,8 +101,8 @@ export const VisualizeContainer = () => {
                     <Form.Item label="Encode Link" name="encodeLink">
                         <Input value={encodeLink} onChange={handleChangeLink}></Input>
                     </Form.Item>
-                    <Form.Item label="Unique Job ID - Please save this for future reference" name="experimentName">
-                        <Input value={experimentName} disabled={true}></Input>
+                    <Form.Item label="Unique Job ID - Please save this for future reference" name="experiment_name">
+                        <Input value={experiment_name} disabled={true}></Input>
                     </Form.Item>
                     <Form.Item label="Assembly Type" name="assembly">
                         <Checkbox.Group defaultValue={["GRCh38"]} onChange={handleChangeAssembly}>

@@ -15,7 +15,7 @@ const Demo = (props) => {
                     <Form.Item label="Encode Link" name="encodeLink">
                         <Input value={encodeLink} disabled="true"></Input>
                     </Form.Item>
-                    <Form.Item label="Unique Job ID - Please save this for future reference" name="experimentName">
+                    <Form.Item label="Unique Job ID - Please save this for future reference" name="experiment_name">
                         <Input value="samplerun" disabled="true"></Input>
                     </Form.Item>
                     <Form.Item label="Assembly Type" name="assembly">

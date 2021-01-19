@@ -11,28 +11,28 @@ export const HeatMapContainer = (props) => {
         error: false,
         correlations_data: [
             {
-                "experimentName": "test9",
-                "rowNum": 0,
-                "colNum": 0,
-                "rowLabel": "ENCFF017NXL.bed.gz",
-                "colLabel": "ENCFF017NXL.bed.gz",
-                "corrValue": 1
+                "experiment_name": "test9",
+                "row_num": 0,
+                "col_num": 0,
+                "row_label": "ENCFF017NXL.bed.gz",
+                "col_label": "ENCFF017NXL.bed.gz",
+                "corr_value": 1
             },
             {
-                "experimentName": "test9",
-                "rowNum": 0,
-                "colNum": 1,
-                "rowLabel": "ENCFF017NXL.bed.gz",
-                "colLabel": "ENCFF071XMA.bed.gz",
-                "corrValue": 0.401480573670878
+                "experiment_name": "test9",
+                "row_num": 0,
+                "col_num": 1,
+                "row_label": "ENCFF017NXL.bed.gz",
+                "col_label": "ENCFF071XMA.bed.gz",
+                "corr_value": 0.401480573670878
             },
             {
-                "experimentName": "test9",
-                "rowNum": 0,
-                "colNum": 2,
-                "rowLabel": "ENCFF017NXL.bed.gz",
-                "colLabel": "ENCFF106NXV.bed.gz",
-                "corrValue": 0.653801541642514
+                "experiment_name": "test9",
+                "row_num": 0,
+                "col_num": 2,
+                "row_label": "ENCFF017NXL.bed.gz",
+                "col_label": "ENCFF106NXV.bed.gz",
+                "corr_value": 0.653801541642514
             }]
     }
 
@@ -59,9 +59,9 @@ export const HeatMapContainer = (props) => {
             return formatted_data;
         }
         for (var i = 0; i < correlations_data.length; i++) {
-            let correlation = correlations_data[i]["corrValue"];
+            let correlation = correlations_data[i]["corr_value"];
             let correlationRounded = round(correlation, 3);
-            formatted_data.push([correlations_data[i]["rowNum"], correlations_data[i]["colNum"], correlationRounded]);
+            formatted_data.push([correlations_data[i]["row_num"], correlations_data[i]["col_num"], correlationRounded]);
         }
         return formatted_data;
     }
@@ -74,22 +74,22 @@ export const HeatMapContainer = (props) => {
         }
         for (var i = 0; i < Math.sqrt(correlations_data.length); i++) {
             console.log(i);
-            labels.push(correlations_data[i]["colLabel"]);
+            labels.push(correlations_data[i]["col_label"]);
         }
         return labels;
     }
 
-    const [experimentName, setExperimentName] = useState("samplerun");
+    const [experiment_name, setexperiment_name] = useState("samplerun");
 
     const handleChangeExp = (event) => {
         console.log("handle change experiment");
         console.log(event.currentTarget.value);
-        setExperimentName(event.currentTarget.value);
+        setexperiment_name(event.currentTarget.value);
     }
 
     const inputSave = () => {
         console.log("start submission");
-        const submittedExp = experimentName;
+        const submittedExp = experiment_name;
         console.log(submittedExp);
         console.log(dispatch);
         loadMapAction(dispatch, submittedExp);
@@ -99,8 +99,8 @@ export const HeatMapContainer = (props) => {
         <div>
             <div className={props.dynamicClass}>
                 <Form>
-                    <Form.Item label="Look Up Heatmap Results By Unique Job ID" name="experimentName">
-                        <Input value={experimentName} onChange={handleChangeExp}></Input>
+                    <Form.Item label="Look Up Heatmap Results By Unique Job ID" name="experiment_name">
+                        <Input value={experiment_name} onChange={handleChangeExp}></Input>
                     </Form.Item>
                     <Form.Item>
                         <Button type="primary" htmlType="submit" onClick={inputSave}>Submit</Button>
