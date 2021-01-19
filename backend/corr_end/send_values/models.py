@@ -1,18 +1,5 @@
 from django.db import models
 
-# Create your models here.
-"""
-# Sample post below
-{
-"experiment_name": "replicateSV21",
-"row_num": "1",
-"col_num": "1",
-"row_label": "ENCFF415GFH",
-"col_label": "ENCFF415GFH",
-"corr_value": "1.0"
-}
-"""
-
 
 class Link(models.Model):
     encode_url = models.CharField(max_length=1000)

@@ -31,8 +31,11 @@ class ResearcherSerializer(ModelSerializer):
         return existing_researcher
 
 
-# Parent Model is Link, Child Model is Researcher
 class LinkSerializer(ModelSerializer):
+    """
+    Parent Model is Link, Child Model is Researcher
+    """
+
     researchers = ResearcherSerializer(many=True, read_only=True)
 
     class Meta:
@@ -57,18 +60,6 @@ class LinkSerializer(ModelSerializer):
             setattr(existing_link, i, field_value)
         existing_link.save()
         return existing_link
-
-
-"""
-class NestedCountrySerializer(serializers.ModelSerializer):
-    name = serializers.CharField(required=False)
-    isd_code = serializers.IntegerField(required=False)
-    short_name = serializers.CharField(required=False)
-    addresses = AddressSerializer(many=True, read_only=True)
-    class Meta:
-        model = Country
-        fields = ['name', 'isd_code', 'short_name', 'addresses']
-"""
 
 
 class CorrelationsSerializer(ModelSerializer):
@@ -117,53 +108,12 @@ class CorrelationsSerializer(ModelSerializer):
         return existing_correlation
 
 
-"""
-GET partial response sample from http://127.0.0.1:8000/values/links/
-{
-        "encode_url": "http6",
-        "submitted_by": "james6",
-        "researchers": [
-            {
-                "name": "shaan",
-                "institution": "bell",
-                "link": 6
-            },
-            {
-                "name": "jay",
-                "institution": "bell",
-                "link": 6
-            },
-            {
-                "name": "shruthik",
-                "institution": "bell",
-                "link": 6
-            }
-        ]
-    },
-POST http://127.0.0.1:8000/values/links/
-{
-    "encode_url": "https://www.chess.com/",
-    "submitted_by": "aditya"
-}
-"""
-
-
 class LinksViewSet(ModelViewSet):
     serializer_class = LinkSerializer
     http_method_names = ["get", "post", "put", "delete", "options"]
     queryset = Link.objects.all()
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = ["encode_url", "submitted_by"]
-
-
-"""
-POST: http://127.0.0.1:8000/values/researchers/
-{
-    "name": "sushy",
-    "institution": "bell",
-    "link": 5
-}
-"""
 
 
 class ResearcherViewSet(ModelViewSet):
@@ -179,5 +129,4 @@ class CorrelationsViewSet(ModelViewSet):
     http_method_names = ["get", "post", "put", "delete", "options"]
     queryset = Correlations.objects.all()
     filter_backends = (DjangoFilterBackend,)
-    # filterset_fields = ('experiment_name', 'row_num', 'col_num', 'row_label', 'col_label', 'corr_value')
     filterset_fields = ("experiment_name", "row_label", "col_label", "corr_value")
