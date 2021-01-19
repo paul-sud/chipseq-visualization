@@ -8,7 +8,7 @@ export default class Navigation extends React.Component {
             if (o.navKey === this.props.currentPage) {
                 return (<div onClick={() => {this.props.showPage(o.path, o.navKey)}} className="farm-bar-item is-slctd">
                     <div className="side-nav-slctn "></div>
-                    
+
                     <div className={o.iconSelector}></div>
                     <div className="side-nav-label">{o.navDisplay}</div>
                 </div>)

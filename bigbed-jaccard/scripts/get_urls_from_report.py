@@ -4,6 +4,7 @@ cloud metadata JSON structure and return a new report with the flattened data.
 """
 
 import json
+
 import pandas as pd
 
 df = pd.read_csv("file_report_2020_4_15_2h_50m.tsv", sep="\t", header=1)

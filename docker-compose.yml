@@ -1,4 +1,5 @@
-version: "3.9"
+---
+version: '3.9'
 
 services:
   db:
@@ -21,7 +22,7 @@ services:
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
     ports:
-      - "8000:8000"
+      - 8000:8000
     depends_on:
       - db
   frontend:
@@ -33,6 +34,6 @@ services:
       # https://stackoverflow.com/questions/29181032/add-a-volume-to-docker-but-exclude-a-sub-folder
       - /app/node_modules/
     ports:
-      - "3000:3000"
+      - 3000:3000
     depends_on:
       - backend

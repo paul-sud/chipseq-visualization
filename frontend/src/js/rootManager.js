@@ -12,7 +12,7 @@ const LazyVisualizePage = lazy(() => import('./scenes/pages/visualize/visualize'
 const RootManager = () => {
     const {
         state: {
-           
+
             cherryUser,
             departments,
             navigation: { page }
@@ -53,8 +53,8 @@ const RootManager = () => {
                 return (<LazyDemoPage></LazyDemoPage>);
             case "Visualize":
                 return (<LazyVisualizePage></LazyVisualizePage>);
-            default: 
-                
+            default:
+
                 return (<LazyOverviewPage></LazyOverviewPage>);
         }
     }

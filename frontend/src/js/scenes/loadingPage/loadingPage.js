@@ -7,7 +7,7 @@ const LoadingPage = () => {
         <div className="center">
             <Spin size="large"></Spin>
         </div>
-        
+
     )
 }
 

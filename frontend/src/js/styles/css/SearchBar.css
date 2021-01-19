@@ -118,9 +118,9 @@ span.dropdown_select_all{
 @media ( min-width: 1280px){
     .dropdown_width{
         flex: 0 0 19%;
-        max-width: 19%; 
+        max-width: 19%;
     }
-    
+
     .searchButton_container{
         margin-top: 24px;
         flex: 0 0 5%;
