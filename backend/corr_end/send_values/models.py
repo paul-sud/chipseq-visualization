@@ -84,19 +84,3 @@ class Correlations(models.Model):
                     self.corr_value,
                 )
             )
-
-
-class Dinosaur(models.Model):
-    age = models.PositiveIntegerField()
-    species = models.TextField()
-    name = models.CharField(max_length=50)
-
-    class Meta:
-        ordering = ("name",)
-
-    def __unicode__(self):
-        if not self.name:
-            name_details = "No Name"
-        else:
-            name_details = self.name
-        return "name %s " % [name_details]

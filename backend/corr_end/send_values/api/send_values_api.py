@@ -3,7 +3,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.serializers import ModelSerializer
 from rest_framework.viewsets import ModelViewSet
 
-from ..models import Correlations, Dinosaur, Link, Researcher
+from ..models import Correlations, Link, Researcher
 
 
 class ResearcherSerializer(ModelSerializer):
@@ -181,36 +181,3 @@ class CorrelationsViewSet(ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     # filterset_fields = ('experiment_name', 'row_num', 'col_num', 'row_label', 'col_label', 'corr_value')
     filterset_fields = ("experiment_name", "row_label", "col_label", "corr_value")
-
-
-class DinoSerializer(ModelSerializer):
-    class Meta:
-        model = Dinosaur
-        fields = ["name", "age", "species"]
-
-    def validate(self, userData):
-        if not userData["name"]:
-            print("name is required")
-            return ValidationError
-        return userData
-
-    def create(self, userData):
-        newDinosaur = Dinosaur.objects.create(**userData)
-        newDinosaur.save()
-        return newDinosaur
-
-    def update(self, existingDinosaur, userData):
-        fields = ["name", "age", "species"]
-        for i in fields:
-            fieldValue = userData.get(i, getattr(existingDinosaur, i))
-            setattr(existingDinosaur, i, fieldValue)
-        existingDinosaur.save()
-        return existingDinosaur
-
-
-class DinoViewSet(ModelViewSet):
-    serializer_class = DinoSerializer
-    http_method_names = ["get", "post", "put", "delete", "options"]
-    queryset = Dinosaur.objects.all()
-    filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ("name", "age", "species")

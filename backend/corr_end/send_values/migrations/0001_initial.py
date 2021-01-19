@@ -33,24 +33,6 @@ class Migration(migrations.Migration):
             options={"ordering": ("experiment_name",)},
         ),
         migrations.CreateModel(
-            name="Dinosaur",
-            fields=[
-                (
-                    "id",
-                    models.AutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                ("age", models.PositiveIntegerField()),
-                ("species", models.TextField()),
-                ("name", models.CharField(max_length=50)),
-            ],
-            options={"ordering": ("name",)},
-        ),
-        migrations.CreateModel(
             name="Link",
             fields=[
                 (
