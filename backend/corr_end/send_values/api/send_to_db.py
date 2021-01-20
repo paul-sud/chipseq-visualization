@@ -1,25 +1,15 @@
-# python send_to_db.py 'https://www.encodeproject.org/search/?searchTerm=H3K4ME3&type=Experiment&replication_type=isogenic&assembly=GRCh38&award.rfa=ENCODE4&format=json'
-import subprocess
-from os import path
-
 import boto3
 
 from ..models import Correlations
 from .lambda_async_s3_uri import filter_complete
 
 
-def insert_db(args):
-    if path.exists("input.txt"):
-        bash_command = "rm input.txt"
-        process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
-        process.communicate()
-
-    if path.exists("output.csv"):
-        bash_command = "rm output.csv"
-        process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
-        process.communicate()
-
-    table_values = filter_complete(args)
+def insert_db(
+    url: str, experiment_name: str, assembly: str, output_type: str, file_type: str
+) -> None:
+    table_values = filter_complete(
+        url, experiment_name, assembly, output_type, file_type
+    )
 
     ordered_table_values = sorted(
         table_values, key=lambda i: (i["row_num"], i["col_num"])

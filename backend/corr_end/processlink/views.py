@@ -7,9 +7,6 @@ from send_values.api.send_to_db import insert_db
 # http://127.0.0.1:8000/processlink/pushlink
 @api_view(["POST"])
 def postLink(request):
-    print(request.method)
-    print(request.data)
-
     requestDict = request.data
 
     link = requestDict["encodeLink"]
@@ -18,17 +15,7 @@ def postLink(request):
     outputType = requestDict["outputType"]
     fileInput = requestDict["fileInput"]
 
-    print("FILE INPUT ALERT")
-    print(fileInput)
-    print("FILE INPUT ALERT END")
-
-    args = [[link], exp_name, assembly, outputType, fileInput]
-    print(link)
-    print(exp_name)
-    print(assembly)
-    print(outputType)
-
-    insert_db(args)
+    insert_db([link], exp_name, assembly, outputType, fileInput)
 
     return Response(data=requestDict, status=status.HTTP_200_OK)
 

@@ -5,15 +5,16 @@ import multiprocessing
 import os
 import re
 import subprocess
-import sys
 import time
+from argparse import ArgumentParser
 from itertools import combinations_with_replacement
+from typing import List
 
 import boto3
 import pandas as pd
 from dotenv import load_dotenv
 
-from .s3_uri import fetch_encsr_encff, set_globals
+from .s3_uri import sequential_encsr_encff
 
 load_dotenv()
 
@@ -26,8 +27,7 @@ def natural_keys(text):
     return [atoi(c) for c in re.split(r"(\d+)", text)]
 
 
-def format(args):
-    bed_paths, bed_labels = fetch_encsr_encff(args)
+def format(bed_paths: List[str], bed_labels: List[str]):
     bed_files_nsort = []
 
     for i in range(len(bed_paths)):
@@ -69,7 +69,7 @@ def format(args):
         print(whole_label)
         bed_formatted.append(whole_label)
 
-    return bed_formatted, num_bed_pairs, bed_files_nsort, bed_labels
+    return bed_formatted, num_bed_pairs, bed_files_nsort
 
 
 def asyncInvokeLambda(payload):
@@ -213,19 +213,19 @@ def bigbed_data(bigbed_labels, experiment_name):
     return table_values
 
 
-def filter_complete(args):
+def filter_complete(
+    url: str, experiment_name: str, assembly: str, output_type: str, file_type: str
+):
     start_time = time.time()
     processes = []
     table_values = []
     not_duplicated = []
-    assembly = args[2]
-    outputType = args[3]
-    fileType = args[4]
-    set_globals(assembly, outputType, fileType)
-    payload_formatted, num_bed_pairs, bed_files_nsort, bed_labels = format(args[0])
-    experiment_name = args[1]
+    bed_paths, bed_labels = sequential_encsr_encff(
+        url, assembly, output_type, file_type
+    )
+    payload_formatted, num_bed_pairs, bed_files_nsort = format(bed_paths, bed_labels)
 
-    if fileType == "bed":
+    if file_type == "bed":
         for payload in payload_formatted:
             p = multiprocessing.Process(target=asyncInvokeLambda, args=(payload,))
             processes.append(p)
@@ -290,9 +290,12 @@ def filter_complete(args):
 
     else:
         # assuming files are bigBed
-        bash_command = "../../bigbed-jaccard/target/release/bigbed-jaccard-similarity-matrix input.txt output.csv"
-        process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
-        process.communicate()
+        bash_command = [
+            "../../bigbed-jaccard/target/release/bigbed-jaccard-similarity-matrix",
+            "input.txt",
+            "output.csv",
+        ]
+        subprocess.run(bash_command, stdout=subprocess.PIPE)
         print("BIG BED FORK REACHED")
 
         # to avoid confusion, a new variable bigBed labels is created as in this case bigBed files are being used
@@ -300,17 +303,33 @@ def filter_complete(args):
         bigbed_labels = bed_labels
 
         table_values = bigbed_data(bigbed_labels, experiment_name)
+        os.remove("input.txt")
+        os.remove("output.csv")
         print(table_values)
         print(len(table_values))
 
         return table_values
 
 
-def main(args):
+def get_parser() -> ArgumentParser:
+    parser = ArgumentParser()
+    parser.add_argument("url")
+    parser.add_argument("experiment")
+    parser.add_argument("assembly")
+    parser.add_argument("output_type")
+    parser.add_argument("file_type")
+    return parser
+
+
+def main() -> None:
     start_time = time.time()
-    filter_complete(args)
+    parser = get_parser()
+    args = parser.parse_args()
+    filter_complete(
+        args.url, args.experiment, args.assembly, args.output_type, args.file_type
+    )
     print("Total time --- %.2f seconds ---" % (time.time() - start_time))
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()
